@@ -93,4 +93,4 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para ma
 
 ## 📫 Contato
 
-Márcia Agostinho - [LinkedIn](https://www.linkedin.com/in/marcia-agostinho-developer/)
+Assis Pires Neto - [LinkedIn](https://www.linkedin.com/in/assis-pires-neto/)
