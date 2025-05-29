@@ -7,41 +7,43 @@ type MessageItemProps = {
   message: Message;
 };
 
-export const MessageItem = ({ message }: MessageItemProps) => (
-  <View
-    style={[
-      styles.messageWrapper,
-      message.isUser ? styles.userMessageWrapper : styles.botMessageWrapper,
-    ]}
-  >
+export const MessageItem = ({ message }: MessageItemProps) => {
+  const isUser = message.isUser;
+
+  return (
     <View
       style={[
-        styles.messageContainer,
-        message.isUser
-          ? styles.userMessageContainer
-          : styles.botMessageContainer,
+        styles.messageWrapper,
+        isUser ? styles.userMessageWrapper : styles.botMessageWrapper,
       ]}
     >
-      <Text
-        style={[styles.messageText, message.isUser && { color: "#FFFFFF" }]}
+      <View
+        style={[
+          styles.messageContainer,
+          isUser ? styles.userMessageContainer : styles.botMessageContainer,
+        ]}
       >
-        {message.content}
-      </Text>
-      <View style={styles.messageFooter}>
-        <Text
-          style={[
-            styles.timestamp,
-            message.isUser ? styles.userTimestamp : styles.botTimestamp,
-          ]}
-        >
-          {message.time}
+        <Text style={[styles.messageText, isUser && { color: "#FFFFFF" }]}>
+          {message.content}
         </Text>
-        {message.isUser && (
-          <Text style={styles.messageStatus}>
-            {message.status === "sent" ? "✓" : "✓✓"}
+
+        <View style={styles.messageFooter}>
+          <Text
+            style={[
+              styles.timestamp,
+              isUser ? styles.userTimestamp : styles.botTimestamp,
+            ]}
+          >
+            {message.time}
           </Text>
-        )}
+
+          {isUser && (
+            <Text style={styles.messageStatus}>
+              {message.status === "sent" ? "✓" : "✓✓"}
+            </Text>
+          )}
+        </View>
       </View>
     </View>
-  </View>
-);
+  );
+};
